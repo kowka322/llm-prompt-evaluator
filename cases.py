@@ -1,7 +1,7 @@
 
 #all categories: spam, question, complaint, request.
 
-TEST_CASES = [
+CASES = [
     {"text": "how long does the delivery take?", "expected": "question"},
     {"text": "what are your allowed payment methods?", "expected": "question"},
     {"text": "when will I get a refund?", "expected": "question"},
