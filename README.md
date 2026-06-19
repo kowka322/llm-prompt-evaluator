@@ -85,10 +85,18 @@ streamlit run app.py
 
 ## Findings
 
-On a 22-case test set with `qwen3:8b`, all three prompts scored similarly on accuracy (around 0.75–0.78) with high consistency (0.95+). Two observations stood out:
+On a 22-case test set with `qwen3:8b` (3 repeats per case), the prompts diverged in a meaningful way:
 
-- The model was highly consistent even when wrong — it repeated the same answer across runs regardless of whether it matched the label. High consistency does not imply correctness.
-- Accuracy plateaued across all prompts. On ambiguous cases (for example, a message that mixes a complaint with a request), the gap between prompts was smaller than the gap between the model's reading and the human label. The bottleneck was the inherent ambiguity of edge cases, not the prompt wording.
+| Prompt | Accuracy | Consistency |
+|---|---|---|
+| `bare` | 0.71 | 0.97 |
+| `definitions` | 0.82 | 0.97 |
+| `examples` | 0.74 | 0.98 |
+
+Two observations stood out:
+
+- Adding category definitions clearly helped. `definitions` beat the bare zero-shot prompt by a solid margin (0.82 vs 0.71), confirming that spelling out the boundary between classes pays off on this task.
+- The model was highly consistent even when wrong — it repeated the same answer across runs regardless of whether it matched the label. High consistency does not imply correctness. On ambiguous cases (for example, a message that mixes a complaint with a request), the gap between the model's reading and the human label was often larger than the gap between prompts, which points to the inherent ambiguity of edge cases rather than the prompt wording.
 
 ## Possible next steps
 
