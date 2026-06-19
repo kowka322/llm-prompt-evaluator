@@ -3,6 +3,8 @@ import prompts
 import ollama
 
 
+categories = ["spam", "question", "complaint", "request"]
+
 def combine(template: str, text: str) -> str:
     return template.format(text=text)
 
