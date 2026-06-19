@@ -39,6 +39,5 @@ def evaluate_prompt(template: str, cases: list[dict]) -> dict:
 def evaluate_all(prompts: dict, cases: list[dict]) -> dict:
     results = {}
     for name, template in prompts.items():
-        print(f"Evaluating prompt: {name}")
         results[name] = evaluate_prompt(template, cases)
     return results
