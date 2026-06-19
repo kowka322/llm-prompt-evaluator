@@ -1,6 +1,7 @@
 import ollama
 
 MODEL = "qwen3:8b"
+N_REPEATS = 5
 CATEGORIES = ["spam", "question", "complaint", "request"]
 
 
@@ -18,7 +19,7 @@ def call_model(prompt: str) -> str:
 
 
 
-def run_repeats(template:str, text:str, n: int=5) -> list[str]:
+def run_repeats(template: str, text: str, n: int = N_REPEATS) -> list[str]:
     prompt = combine(template,text)
     answers = []
     for i in range(n):
